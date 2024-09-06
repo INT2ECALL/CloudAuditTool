@@ -75,7 +75,7 @@ selfsubjectrulesreviews.authorization.k8s.io    []                  []          
                                                 [/version]          []               [get]
 ```
 
-### 扫描
+### 未授权扫描
 ##### Apiserver
 ```
 root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudPentestSuite scan apiserver --cidr=8.130.97.27

@@ -11,6 +11,21 @@
 
 
 ## 使用方法
+```
+root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudPentestSuite
+Usage:
+  Test [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  info        信息收集模块
+  scan        扫描模块
+
+Flags:
+  -h, --help   help for Test
+
+```
 
 ```
 [节点信息]

@@ -91,9 +91,8 @@ Response status: 200 OK
 +--------------------+-------------------------+----------+
 +--------------------+-------------------------+----------+
 [ServiceAccount收集]
-ERROR: 搜索目录/var/lib/kubelet/pods/失败
 +-------------------+-------------------+
-| POD名(有点小问题) | SERIVICEACCOUNT名 |
+| POD名 | SERIVICEACCOUNT名 |
 +-------------------+-------------------+
 +-------------------+-------------------+
 [逃逸特权]
@@ -211,15 +210,10 @@ root          87  0.0  0.0   2380   888 pts/0    S+   03:12   0:00 /bin/sh -c ps
 root          88  0.0  0.1  10620  3884 pts/0    R+   03:12   0:00 ps aux
 
 [网络]
-err out:
-/bin/sh: 1: ss: not found
 
-/bin/sh: 1: ss: not found
 
 [云上账号权限]
-cloudProvider
-未知
-cloudProvider
+
 [History列表]]
 2024/09/10 03:12:37 err found while open /root/.bash_history
 ```

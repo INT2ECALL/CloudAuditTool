@@ -101,7 +101,7 @@ selfsubjectrulesreviews.authorization.k8s.io    []                  []          
 | CAP_DAC_READ_SEARCH | 可以读取主机文件                                                                        |
 | CAP_SYS_MODULE      | 可以通过挂载内核模块逃逸                                                                |
 | CAP_SYS_PTRACE      | 如果和主机处于同一个PID命名空间，可以通过进程注入，在目标进行指定任意代码，完成容易逃逸 |
-| CAP_SYS_ADMIN       | 可以通过mount命令挂载Cgroup或主机文件逃逸（仅限于cgroup                                 |
+| CAP_SYS_ADMIN       | 可以通过mount命令挂载Cgroup逃逸（仅限于cgroup                                 |
 |                     | v1版本）                                                                                |
 +---------------------+-----------------------------------------------------------------------------------------+
 [敏感挂载]

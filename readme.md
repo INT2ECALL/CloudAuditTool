@@ -217,14 +217,15 @@ root          88  0.0  0.1  10620  3884 pts/0    R+   03:12   0:00 ps aux
 2024/09/10 03:12:37 err found while open /root/.bash_history
 ```
 ### 未授权扫描
+##### All
+扫描所有
+```
+root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudPentestSuite scan apiserver --cidr=8.130.97.27
+
+```
+
 ##### Apiserver
 ```
 root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudPentestSuite scan apiserver --cidr=8.130.97.27
-┌─────────────────────────────┐
-│       存在未授权的节点         |
-├───┬─────────────────────────┤
-│   │ 未授权地址                │
-├───┼─────────────────────────┤
-│ 1 │ http://8.130.97.27:8080 │
-└───┴─────────────────────────┘
+
 ```

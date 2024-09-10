@@ -77,8 +77,7 @@ selfsubjectrulesreviews.authorization.k8s.io    []                  []          
 #### 容器
 ```
 [节点信息]
-https://10.96.0.1:443
-Response status: 200 OK
+
 +----------------------------+-----------------------+----------+---------------------------+--------+
 | 当前环境（容器内/主机节点) |     APISERVER地址     | K8S版本  |          节点名           | 云平台 |
 +----------------------------+-----------------------+----------+---------------------------+--------+
@@ -180,7 +179,7 @@ root          88  0.0  0.1  10620  3884 pts/0    R+   03:12   0:00 ps aux
 2024/09/10 03:12:37 err found while open /root/.bash_history
 ```
 ### 未授权扫描
-##### All
+##### 扫描所有关键组件的未授权
 扫描所有包括Etcd,Apiserver,dockersock,kubelet组件的未授权
 ```
 root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudPentestSuite scan all --cidr=10.211.55.6/24

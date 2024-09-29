@@ -34,6 +34,7 @@ Flags:
 
 ```
 info模块
+
 ```
 root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudAuditTool info 
 信息收集模块
@@ -58,6 +59,7 @@ Available Commands:
   process         查询当前所有进程
   senstivefile    查询当前环境变量
   serviceaccount  检索serviceaccount凭证以及权限
+```
 ### 信息收集
 #### 主机节点
 ```

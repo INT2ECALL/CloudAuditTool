@@ -33,6 +33,32 @@ Flags:
   -h, --help   help for Test
 
 ```
+info模块
+```
+root@ubuntu-linux-22-04-desktop:/home/parallels/code/CloudPentestSuite# ./CloudAuditTool info
+信息收集模块
+
+Usage:
+   info [flags]
+   info [command]
+
+Available Commands:
+  all             所有信息收集（尽量覆盖攻击面，凭据，文件，环境变量，所有Secret，网络，挂载等）
+  apiserverunauth 查询是否存在Apiserver未授权
+  cloudaccount    查询当前是否存在云账号以及权限
+  critical        关键信息收集
+  dockerconfig    Docker登录凭证
+  env             查询当前环境变量
+  etcdconfig      检索Etcd凭证
+  history         查询bash history记录
+  kubeconfig      检索Kubeconfig凭证
+  mount           查询当前具备的容器权限
+  namespace       检测命名空间隔离
+  privilege       查询当前具备的容器权限
+  process         查询当前所有进程
+  senstivefile    查询当前环境变量
+  serviceaccount  检索serviceaccount凭证以及权限
+```
 
 ### 信息收集
 #### 主机节点

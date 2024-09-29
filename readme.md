@@ -108,19 +108,33 @@ selfsubjectrulesreviews.authorization.k8s.io    []                  []          
 |                     | v1版本）                                                                                |
 +---------------------+-----------------------------------------------------------------------------------------+
 [敏感挂载]
-overlay on / type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/NHRL2DAYKUQQLCAAXWEZJKA5SX:/var/lib/docker/overlay2/l/NE6C2PO76GTZBTCOSBNHB6SWLE:/var/lib/docker/overlay2/l/KUBQBW547V5H56IKUUG5CGJK7C:/var/lib/docker/overlay2/l/EHPY4M746XJVN25TXRI25LSLSF:/var/lib/docker/overlay2/l/TOHQ6MANDIWKXYIGZ5QOX2GV7Z:/var/lib/docker/overlay2/l/IMJVRAWRCFRQDEVVJKTVCRITXI:/var/lib/docker/overlay2/l/JALLKVQ546MOPKI7SXV2NZSWE3:/var/lib/docker/overlay2/l/UCBAPBCKVPGATKHZANLO4JTGI4:/var/lib/docker/overlay2/l/QSHHGHOPA46ZMJOHSOPNSKSTCB:/var/lib/docker/overlay2/l/VOCWYSV6QXMF7BMX54ACUSGNR2,upperdir=/var/lib/docker/overlay2/5e4711091ab70078dc54bc771ee2a7c29f3cdb5213dd30eb18a86768fd245913/diff,workdir=/var/lib/docker/overlay2/5e4711091ab70078dc54bc771ee2a7c29f3cdb5213dd30eb18a86768fd245913/work)
-proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
-tmpfs on /dev type tmpfs (rw,nosuid,size=65536k,mode=755,inode64)
-devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=666)
-sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
-cgroup on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
-mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
-/dev/sda2 on /dev/termination-log type ext4 (rw,relatime)
-/dev/sda2 on /etc/resolv.conf type ext4 (rw,relatime)
-/dev/sda2 on /etc/hostname type ext4 (rw,relatime)
-/dev/sda2 on /etc/hosts type ext4 (rw,relatime)
-shm on /dev/shm type tmpfs (rw,nosuid,nodev,noexec,relatime,size=65536k,inode64)
-tmpfs on /run/secrets/kubernetes.io/serviceaccount type tmpfs (ro,relatime,size=1911968k,inode64)
++---------------------------------------------------------------------------------+---------------------+----------+-----------+----------+
+|                                      目录                                       |    容器中挂载点     | 文件类型 | 设备类型  | 读写方式 |
++---------------------------------------------------------------------------------+---------------------+----------+-----------+----------+
+| /                                                                               | /                   | overlay  | overlay   | rw       |
+| /                                                                               | /proc               | proc     | proc      | rw       |
+| /                                                                               | /dev                | tmpfs    | tmpfs     | rw       |
+| /                                                                               | /dev/pts            | devpts   | devpts    | rw       |
+| /                                                                               | /sys                | sysfs    | sysfs     | ro       |
+| /                                                                               | /sys/fs/cgroup      | cgroup2  | cgroup    | rw       |
+| /                                                                               | /dev/mqueue         | mqueue   | mqueue    | rw       |
+| /                                                                               | /dev/shm            | tmpfs    | shm       | rw       |
+| /./01de2538ae94a894ef6c94a4f2768e37ec1da568834a7d8dd03f1347adf417bb/resolv.conf | /etc/resolv.conf    | ext4     | /dev/sda2 | rw       |
+| /./01de2538ae94a894ef6c94a4f2768e37ec1da568834a7d8dd03f1347adf417bb/hostname    | /etc/hostname       | ext4     | /dev/sda2 | rw       |
+| /./01de2538ae94a894ef6c94a4f2768e37ec1da568834a7d8dd03f1347adf417bb/hosts       | /etc/hosts          | ext4     | /dev/sda2 | rw       |
+| /0                                                                              | /dev/console        | devpts   | devpts    | rw       |
+| /bus                                                                            | /proc/bus           | proc     | proc      | rw       |
+| /fs                                                                             | /proc/fs            | proc     | proc      | rw       |
+| /irq                                                                            | /proc/irq           | proc     | proc      | rw       |
+| /sys                                                                            | /proc/sys           | proc     | proc      | rw       |
+| /sysrq-trigger                                                                  | /proc/sysrq-trigger | proc     | proc      | rw       |
+| /                                                                               | /proc/asound        | tmpfs    | tmpfs     | ro       |
+| /null                                                                           | /proc/kcore         | tmpfs    | tmpfs     | rw       |
+| /null                                                                           | /proc/keys          | tmpfs    | tmpfs     | rw       |
+| /null                                                                           | /proc/timer_list    | tmpfs    | tmpfs     | rw       |
+| /                                                                               | /proc/scsi          | tmpfs    | tmpfs     | ro       |
+| /                                                                               | /sys/firmware       | tmpfs    | tmpfs     | ro       |
++---------------------------------------------------------------------------------+---------------------+----------+-----------+----------+
 
 [环境变量]
 KUBERNETES_SERVICE_PORT=443
@@ -166,15 +180,12 @@ kubernetes.default.svc.cluster.local. 443
 myweb.default.svc.cluster.local. 8080
 tomcat01-647f68fdc7-8gs6j.default.svc.cluster.local. 15672
 [进程]
-USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root           1  0.7  4.5 3156048 91408 ?       Ssl  03:03   0:04 /opt/java/openjdk/bin/java -Djava.util.logging.config.file=/usr/local/tomcat/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED -classpath /usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar -Dcatalina.base=/usr/local/tomcat -Dcatalina.home=/usr/local/tomcat -Djava.io.tmpdir=/usr/local/tomcat/temp org.apache.catalina.startup.Bootstrap start
-root          54  0.0  0.2   7312  4072 pts/0    Ss   03:04   0:00 bash
-root          77  4.5  1.9 5846388 40092 pts/0   Sl+  03:12   0:00 ./CloudPentestSuite info all
-root          87  0.0  0.0   2380   888 pts/0    S+   03:12   0:00 /bin/sh -c ps aux
-root          88  0.0  0.1  10620  3884 pts/0    R+   03:12   0:00 ps aux
+root    2355859 1
+root    2355881 2355859 /usr/bin/dash
+root    2355893 2355881 /usr/bin/sleep
 
 [网络]
-
+{16455868 172.17.0.6:55534 169.254.169.254:80 SYN_SENT 0 2366289/CloudAuditTool}
 
 [云上账号权限]
 

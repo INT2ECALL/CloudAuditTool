@@ -56,6 +56,19 @@ Flags:
 | /etc/kubernetes/admin.conf   | https://10.211.55.6:6443 | kubernetes-admin                       |
 | /etc/kubernetes/kubelet.conf | https://10.211.55.6:6443 | system:node:ubuntu-linux-22-04-desktop |
 +------------------------------+--------------------------+----------------------------------------+
+[Etcd凭证类收集]
++-------------------------------------------------+
+|                  ETCD凭证路径                   |
++-------------------------------------------------+
+| /etc/kubernetes/pki/etcd/ca.crt                 |
+| /etc/kubernetes/pki/etcd/ca.key                 |
+| /etc/kubernetes/pki/etcd/healthcheck-client.crt |
+| /etc/kubernetes/pki/etcd/healthcheck-client.key |
+| /etc/kubernetes/pki/etcd/peer.crt               |
+| /etc/kubernetes/pki/etcd/peer.key               |
+| /etc/kubernetes/pki/etcd/server.crt             |
+| /etc/kubernetes/pki/etcd/server.key             |
++-------------------------------------------------+
 凭证权限: /etc/kubernetes/admin.conf
 Resources                                       Non-Resource URLs   Resource Names   Verbs
 *.*                                             []                  []               [*]
@@ -80,6 +93,43 @@ selfsubjectrulesreviews.authorization.k8s.io    []                  []          
                                                 [/version/]         []               [get]
                                                 [/version]          []               [get]
                                                 [/version]          []               [get]
+[ServiceAccount收集]
++----------------------------+------------------------+
+|           POD名            |   SERIVICEACCOUNT名    |
++----------------------------+------------------------+
+| detector-xr57d             | sectest:lisi           |
+| coredns-6d8c4cb4d-v2v6s    | kube-system:coredns    |
+| ubuntu-linux-22-04-desktop | kube-flannel:flannel   |
+| ubuntu-linux-22-04-desktop | kube-system:kube-proxy |
++----------------------------+------------------------+
+[sectest:lisi]的路径和权限如下
+/var/lib/kubelet/pods/3dee0948-8fcc-4e1f-8109-2fbbadd5fdd4/volumes/kubernetes.io~projected/kube-api-access-q6mlm/token
+
+
+Resources                                       Non-Resource URLs                     Resource Names   Verbs
+selfsubjectaccessreviews.authorization.k8s.io   []                                    []               [create]
+selfsubjectrulesreviews.authorization.k8s.io    []                                    []               [create]
+secrets                                         []                                    []               [get watch list]
+                                                [/.well-known/openid-configuration]   []               [get]
+                                                [/api/*]                              []               [get]
+                                                [/api]                                []               [get]
+                                                [/apis/*]                             []               [get]
+                                                [/apis]                               []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/healthz]                            []               [get]
+                                                [/livez]                              []               [get]
+                                                [/livez]                              []               [get]
+                                                [/openapi/*]                          []               [get]
+                                                [/openapi]                            []               [get]
+                                                [/openid/v1/jwks]                     []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/readyz]                             []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version/]                           []               [get]
+                                                [/version]                            []               [get]
+                                                [/version]                            []               [get]
+
+
 ```
 #### 容器
 ```
